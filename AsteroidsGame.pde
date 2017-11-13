@@ -20,10 +20,10 @@ public void draw()
 }
 public void keyPressed() {
   if (key=='w') {
-    bob.accelerate(0.5);
+    bob.accelerate(0.2);
   }
   if(key=='s') {
-    bob.accelerate(-0.5);
+    bob.accelerate(-0.2);
   }
   if (key=='a') {
     bob.turn(-20);

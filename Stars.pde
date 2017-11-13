@@ -1,4 +1,4 @@
-class Stars //note that this class does NOT extend Floater
+public class Stars //note that this class does NOT extend Floater
 {
   private int myX, myY;
   public Stars() {

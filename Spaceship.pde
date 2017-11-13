@@ -1,4 +1,4 @@
-class Spaceship extends Floater  
+public class Spaceship extends Floater  
 {   
   Spaceship() {
     corners =4;
