@@ -1,15 +1,16 @@
 private Spaceship bob;
-private Asteroid rock;
 private Stars[] sky = new Stars[500];
-//private Asteroid[] rocks = new Asteroid[10];
+private Asteroid[] rocks = new Asteroid[50];
 public void setup() 
 {
   noStroke();
   size(1000, 700);
   bob = new Spaceship();
-  rock = new Asteroid();
   for (int i =0; i <sky.length; i++) {
     sky[i] = new Stars();
+  }
+  for (int i =0; i<rocks.length; i++) {
+    rocks[i] = new Asteroid();
   }
 }
 public void draw() 
@@ -20,8 +21,10 @@ public void draw()
   for (int i =0; i<sky.length; i ++) {
     sky[i].show();
   }
-  rock.show();
-  rock.move();
+  for (int i =0; i<rocks.length; i++){
+    rocks[i].show();
+    rocks[i].move();
+  }
 }
 public void keyPressed() {
   if (key=='w') {
