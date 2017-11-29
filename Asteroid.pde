@@ -11,6 +11,7 @@ public class Asteroid extends Floater
     myCenterY = (int)(Math.random()*701);
     myDirectionX = (int)(Math.random()*11-5);
     myDirectionY = (int)(Math.random()*11-5);
+    if(myDirectionY == 0 && myDirectionX ==0) {myDirectionY = 1;}
     myPointDirection = (int)(Math.random()*360 +1);
     myColor= color(255);
     rotation = (int)(Math.random()*51-25);
@@ -46,7 +47,9 @@ public class Asteroid extends Floater
     return myPointDirection;
   }
   public void move() {
+    pushMatrix();
     rotate(rotation);
+    popMatrix();
     super.move();
   }
 }

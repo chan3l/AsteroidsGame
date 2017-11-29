@@ -1,6 +1,6 @@
 private Spaceship bob;
 private Stars[] sky = new Stars[500];
-private Asteroid[] rocks = new Asteroid[50];
+private Asteroid[] rocks = new Asteroid[10];
 public void setup() 
 {
   noStroke();
