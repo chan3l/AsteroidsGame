@@ -1,6 +1,6 @@
 private Spaceship bob;
 private Stars[] sky = new Stars[500];
-private Asteroid[] rocks = new Asteroid[10];
+private ArrayList <Asteroid> rocks = new ArrayList <Asteroid>();
 public void setup() 
 {
   noStroke();
@@ -9,8 +9,8 @@ public void setup()
   for (int i =0; i <sky.length; i++) {
     sky[i] = new Stars();
   }
-  for (int i =0; i<rocks.length; i++) {
-    rocks[i] = new Asteroid();
+  for (int i =0; i<10; i++) {
+    rocks.add(new Asteroid());
   }
 }
 public void draw() 
@@ -21,9 +21,16 @@ public void draw()
   for (int i =0; i<sky.length; i ++) {
     sky[i].show();
   }
-  for (int i =0; i<rocks.length; i++){
-    rocks[i].show();
-    rocks[i].move();
+    float distance;
+  for(int i =0; i <rocks.size(); i++) {
+    distance = dist(rocks.get(i).getX(), rocks.get(i).getY(), bob.getX(), bob.getY());
+      if(distance <20) {
+         rocks.remove(i);
+      }
+  }
+  for (int i =0; i<rocks.size(); i++){
+    rocks.get(i).show();
+    rocks.get(i).move();
   }
 }
 public void keyPressed() {
@@ -45,5 +52,8 @@ public void keyPressed() {
     bob.setPointDirection((int)(Math.random()*361));
     bob.setX((int)(Math.random()*1001));
     bob.setY((int)(Math.random()*1001));
+    for (int i =0; i <sky.length; i++) {
+    sky[i] = new Stars();
+    }
   }
 }
