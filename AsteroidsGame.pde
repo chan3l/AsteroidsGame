@@ -24,8 +24,9 @@ public void draw()
     float distance;
   for(int i =0; i <rocks.size(); i++) {
     distance = dist(rocks.get(i).getX(), rocks.get(i).getY(), bob.getX(), bob.getY());
-      if(distance <20) {
+      if(distance <30) {
          rocks.remove(i);
+         rocks.add(new Asteroid());
       }
   }
   for (int i =0; i<rocks.size(); i++){
