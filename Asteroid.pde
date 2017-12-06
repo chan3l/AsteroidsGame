@@ -47,7 +47,7 @@ public class Asteroid extends Floater
     return myPointDirection;
   }
   public void move() {
-  //  rotate(rotation);
+  // rotate(rotation);
     super.move();
   }
 }

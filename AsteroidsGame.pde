@@ -1,5 +1,6 @@
 private Spaceship bob;
 private Stars[] sky = new Stars[500];
+private ArrayList <Bullet> ammo = new ArrayList <Bullet>();
 private ArrayList <Asteroid> rocks = new ArrayList <Asteroid>();
 public void setup() 
 {
@@ -21,15 +22,29 @@ public void draw()
   for (int i =0; i<sky.length; i ++) {
     sky[i].show();
   }
-    float distance;
-  for(int i =0; i <rocks.size(); i++) {
-    distance = dist(rocks.get(i).getX(), rocks.get(i).getY(), bob.getX(), bob.getY());
-      if(distance <30) {
-         rocks.remove(i);
-         rocks.add(new Asteroid());
-      }
+  for (int i = 0; i<ammo.size(); i++) {
+    ammo.get(i).show();
+    ammo.get(i).move();
   }
-  for (int i =0; i<rocks.size(); i++){
+  float hit;
+  for (int i = 0; i<ammo.size(); i++) {
+    hit = dist(ammo.get(i).getX(), ammo.get(i).getY(), rocks.get(i).getX(), rocks.get(i).getY());
+     if(hit<20) {
+       ammo.remove(i);
+       rocks.remove(i);
+       rocks.add(new Asteroid());
+       break;
+     }
+  }
+  float distance;
+  for (int i =0; i <rocks.size(); i++) {
+    distance = dist(rocks.get(i).getX(), rocks.get(i).getY(), bob.getX(), bob.getY());
+    if (distance <25) {
+      rocks.remove(i);
+      rocks.add(new Asteroid());
+    }
+  }
+  for (int i =0; i<rocks.size(); i++) {
     rocks.get(i).show();
     rocks.get(i).move();
   }
@@ -54,7 +69,10 @@ public void keyPressed() {
     bob.setX((int)(Math.random()*1001));
     bob.setY((int)(Math.random()*1001));
     for (int i =0; i <sky.length; i++) {
-    sky[i] = new Stars();
+      sky[i] = new Stars();
     }
+  }
+  if (key==32) {
+    ammo.add(new Bullet(bob));
   }
 }
