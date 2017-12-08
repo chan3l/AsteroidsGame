@@ -2,6 +2,8 @@ private Spaceship bob;
 private Stars[] sky = new Stars[500];
 private ArrayList <Bullet> ammo = new ArrayList <Bullet>();
 private ArrayList <Asteroid> rocks = new ArrayList <Asteroid>();
+private boolean[] keys = new boolean[6];
+
 public void setup() 
 {
   noStroke();
@@ -13,7 +15,11 @@ public void setup()
   for (int i =0; i<10; i++) {
     rocks.add(new Asteroid());
   }
+  for (int i =0; i<keys.length; i++) {
+    keys[i] = false;
+  }
 }
+
 public void draw() 
 {
   background(0);
@@ -28,13 +34,15 @@ public void draw()
   }
   float hit;
   for (int i = 0; i<ammo.size(); i++) {
-    hit = dist(ammo.get(i).getX(), ammo.get(i).getY(), rocks.get(i).getX(), rocks.get(i).getY());
-     if(hit<20) {
-       ammo.remove(i);
-       rocks.remove(i);
-       rocks.add(new Asteroid());
-       break;
-     }
+    for (int x = 0; x<rocks.size(); x++) {
+      hit = dist(ammo.get(i).getX(), ammo.get(i).getY(), rocks.get(x).getX(), rocks.get(x).getY());
+      if (hit<20) {
+        ammo.remove(i);
+        rocks.remove(x);
+        rocks.add(new Asteroid());
+        break;
+      }
+    }
   }
   float distance;
   for (int i =0; i <rocks.size(); i++) {
@@ -48,21 +56,19 @@ public void draw()
     rocks.get(i).show();
     rocks.get(i).move();
   }
-}
-public void keyPressed() {
-  if (key=='w') {
+  if (keys[0] == true) {
     bob.accelerate(0.2);
   }
-  if (key=='s') {
+  if (keys[1] ==true) {
     bob.accelerate(-0.2);
   }
-  if (key=='a') {
+  if (keys[2] ==true) {
     bob.turn(-20);
   }
-  if (key=='d') {
+  if (keys[3] ==true) {
     bob.turn(20);
   }
-  if (key=='e') {
+  if (keys[4] ==true) {
     bob.setDirectionX(0);
     bob.setDirectionY(0);
     bob.setPointDirection((int)(Math.random()*361));
@@ -72,7 +78,49 @@ public void keyPressed() {
       sky[i] = new Stars();
     }
   }
-  if (key==32) {
+  if (keys[5] ==true) {
     ammo.add(new Bullet(bob));
+  }
+}
+
+public void keyPressed() {
+  if (key=='w') {
+    keys[0] =true;
+  }
+  if (key=='s') {
+    keys[1] = true;
+  }
+  if (key=='a') {
+    keys[2] = true;
+  }
+  if (key=='d') {
+    keys[3] =true;
+  }
+  if (key=='e') {
+    keys[4] = true;
+  }
+  if (key==32) {
+    keys[5] = true;
+  }
+}
+
+public void keyReleased() {
+    if (key=='w') {
+    keys[0] =false;
+  }
+  if (key=='s') {
+    keys[1] = false;
+  }
+  if (key=='a') {
+    keys[2] = false;
+  }
+  if (key=='d') {
+    keys[3] =false;
+  }
+  if (key=='e') {
+    keys[4] = false;
+  }
+  if (key==32) {
+    keys[5] = false;
   }
 }

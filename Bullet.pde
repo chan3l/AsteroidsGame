@@ -8,7 +8,7 @@ public class Bullet extends Floater {
     myDirectionY = 5*Math.sin(dRadians);
     myColor = color(255);
   }
-   public void setX(int x) {
+  public void setX(int x) {
     myCenterX = x;
   }
   public int getX() {
@@ -40,5 +40,9 @@ public class Bullet extends Floater {
   }
   public void show() {
     ellipse((float)myCenterX, (float)myCenterY, 10, 10 );
+  }
+  public void move() {
+    myCenterX += myDirectionX;    
+    myCenterY += myDirectionY;
   }
 }
