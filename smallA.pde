@@ -1,11 +1,19 @@
-public class Bullet extends Floater {
-  public Bullet(Spaceship bob) {
-    myCenterX = bob.getX();
-    myCenterY = bob.getY();
-    myPointDirection = bob.getPointDirection();
-    double dRadians = myPointDirection*(Math.PI/180);
-    myDirectionX = 5*Math.cos(dRadians);
-    myDirectionY = 5*Math.sin(dRadians);
+public class smallA extends Floater {
+   private int rotation;
+  public smallA() {
+    corners = 9;
+    int[] xS = {12, 16, 8, -8, -16, -24, -8, 8, 16};
+    int[] yS = {0, 16, 24, 8, 9, 0, -24, -16, -15};
+    xCorners = xS;
+    yCorners = yS;
+    myCenterX = (int)(Math.random()*1001);
+    myCenterY = (int)(Math.random()*701);
+    myDirectionX = (int)(Math.random()*9-4);
+    myDirectionY = (int)(Math.random()*9-4);
+   if(myDirectionY == 0 && myDirectionX ==0) {myDirectionY = 1;}
+    myPointDirection = (int)(Math.random()*360 +1);
+    myColor= color(255);
+    rotation = (int)(Math.random()*-3+7);
   }
   public void setX(int x) {
     myCenterX = x;
@@ -37,12 +45,8 @@ public class Bullet extends Floater {
   public double getPointDirection() {
     return myPointDirection;
   }
-  public void show() {
-    noStroke();
-    ellipse((float)myCenterX, (float)myCenterY, 10, 10 );
-  }
   public void move() {
-    myCenterX += myDirectionX;    
-    myCenterY += myDirectionY;
+    turn(rotation);
+    super.move();
   }
 }

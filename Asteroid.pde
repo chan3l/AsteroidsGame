@@ -3,8 +3,8 @@ public class Asteroid extends Floater
   private int rotation;
   public Asteroid() {
     corners = 9;
-    int[] xS = {12, 16, 8, -8, -16, -24, -8, 8, 16};
-    int[] yS = {0, 16, 24, 8, 9, 0, -24, -16, -15};
+    int[] xS = {24, 32, 16, -16, -32, -60, -16, 16, 32};
+    int[] yS = {0, 32, 48, 16, 18, 0, -48, -32, -30};
     xCorners = xS;
     yCorners = yS;
     myCenterX = (int)(Math.random()*1001);
@@ -47,7 +47,7 @@ public class Asteroid extends Floater
     return myPointDirection;
   }
   public void move() {
-    turn(rotation);
+    //turn(rotation);
     super.move();
   }
 }

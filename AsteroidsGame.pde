@@ -28,6 +28,7 @@ public void draw()
   for (int i =0; i<sky.length; i ++) {
     sky[i].show();
   }
+  fill(0,0,255);
   for (int i = 0; i<ammo.size(); i++) {
     ammo.get(i).show();
     ammo.get(i).move();
@@ -57,16 +58,16 @@ public void draw()
     rocks.get(i).move();
   }
   if (keys[0] == true) {
-    bob.accelerate(0.2);
+    bob.accelerate(0.05);
   }
   if (keys[1] ==true) {
-    bob.accelerate(-0.2);
+    bob.accelerate(-0.05);
   }
   if (keys[2] ==true) {
-    bob.turn(-20);
+    bob.turn(-7);
   }
   if (keys[3] ==true) {
-    bob.turn(20);
+    bob.turn(7);
   }
   if (keys[4] ==true) {
     bob.setDirectionX(0);
