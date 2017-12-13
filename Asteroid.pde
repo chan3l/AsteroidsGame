@@ -1,6 +1,6 @@
 public class Asteroid extends Floater
 {
-  private int rotation;
+  protected int rotation;
   public Asteroid() {
     corners = 9;
     int[] xS = {24, 32, 16, -16, -32, -60, -16, 16, 32};
@@ -14,7 +14,7 @@ public class Asteroid extends Floater
    if(myDirectionY == 0 && myDirectionX ==0) {myDirectionY = 1;}
     myPointDirection = (int)(Math.random()*360 +1);
     myColor= color(255);
-    rotation = (int)(Math.random()*-3+7);
+    rotation = (int)(Math.random()*7-3);
   }
   public void setX(int x) {
     myCenterX = x;
@@ -47,7 +47,7 @@ public class Asteroid extends Floater
     return myPointDirection;
   }
   public void move() {
-    //turn(rotation);
+    turn(rotation);
     super.move();
   }
 }
