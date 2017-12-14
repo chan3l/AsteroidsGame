@@ -7,7 +7,6 @@ private int time = millis();
 
 public void setup() 
 {
-  System.out.println(time);
   noStroke();
   size(1000, 700);
   bob = new Spaceship();
@@ -41,9 +40,10 @@ public void draw()
       hit = dist(ammo.get(i).getX(), ammo.get(i).getY(), rocks.get(x).getX(), rocks.get(x).getY());
       if (hit<40) {
         ammo.remove(i);
-        rocks.remove(x);
-       rocks.add(new Asteroid());
+        rocks.set(rocks.size()-1,new smallA(rocks.get(x).getX(), rocks.get(x).getY()));
         rocks.add(new smallA(rocks.get(x).getX(), rocks.get(x).getY()));
+        rocks.remove(x);
+       //rocks.add(new Asteroid());
         break;
       }
     }
