@@ -11,7 +11,7 @@ public class Bullet extends Floater {
     myCenterX = x;
   }
   public int getX() {
-    return(int)(myCenterX);
+    return (int)(myCenterX);
   }
   public void setY(int y) {
     myCenterY =y;
