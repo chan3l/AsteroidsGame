@@ -29,7 +29,7 @@ public void draw()
   for (int i =0; i<sky.length; i ++) {
     sky[i].show();
   }
-  fill(0,0,255);
+  fill(255,0,0);
   for (int i = 0; i<ammo.size(); i++) {
     ammo.get(i).show();
     ammo.get(i).move();

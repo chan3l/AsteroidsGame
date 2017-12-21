@@ -13,7 +13,7 @@ public class Asteroid extends Floater
     myDirectionY = (int)(Math.random()*9-4);
    if(myDirectionY == 0 && myDirectionX ==0) {myDirectionY = 1;}
     myPointDirection = (int)(Math.random()*360 +1);
-    myColor= color(255);
+    myColor= color(232,232,232);
     rotation = (int)(Math.random()*7-3);
   }
   public void setX(int x) {
