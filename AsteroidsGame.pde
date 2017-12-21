@@ -61,16 +61,16 @@ public void draw()
     rocks.get(i).move();
   }
   if (keys[0] == true) {
-    bob.accelerate(0.05);
+    bob.accelerate(0.02);
   }
   if (keys[1] ==true) {
-    bob.accelerate(-0.05);
+    bob.accelerate(-0.02);
   }
   if (keys[2] ==true) {
-    bob.turn(-7);
+    bob.turn(-3);
   }
   if (keys[3] ==true) {
-    bob.turn(7);
+    bob.turn(3);
   }
   if (keys[4] ==true) {
     bob.setDirectionX(0);
